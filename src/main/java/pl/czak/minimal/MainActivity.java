@@ -77,7 +77,8 @@ public class MainActivity extends Activity
         label.setTag(computeTimestamp());
         getPackedSwitchResult(1);
         getSparseSwitchResult(100);
-        getArrayData();
+        getSmallArrayData();
+        getLargeArrayData();
         sumToN(10);
         useLambda();
         useMethodReference();
@@ -119,9 +120,14 @@ public class MainActivity extends Activity
         }
     }
 
-    // Array data (fill-array-data payload)
-    private int[] getArrayData() {
+    // Small array uses filled-new-array
+    private int[] getSmallArrayData() {
         return new int[] { 10, 20, 30, 40, 50 };
+    }
+
+    // Larger array uses fill-array-data payload
+    private int[] getLargeArrayData() {
+        return new int[] { 10, 20, 30, 40, 50, 60, 70, 80 };
     }
 
     // Loop generates goto instruction
