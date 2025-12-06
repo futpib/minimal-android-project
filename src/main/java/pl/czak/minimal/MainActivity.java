@@ -23,6 +23,9 @@ class DefaultMessageProvider implements MessageProvider {
     }
 }
 
+// Record uses invoke-custom for toString/equals/hashCode
+record MessageRecord(String text, int priority) {}
+
 public class MainActivity extends Activity
 {
     // Static field
@@ -78,6 +81,7 @@ public class MainActivity extends Activity
         sumToN(10);
         useLambda();
         useMethodReference();
+        useRecord();
         setContentView(label);
     }
 
@@ -139,5 +143,11 @@ public class MainActivity extends Activity
     private int useMethodReference() {
         List<String> items = Arrays.asList("a", "bb", "ccc");
         return items.stream().mapToInt(String::length).sum();
+    }
+
+    // Record's toString/equals/hashCode use invoke-custom via ObjectMethods bootstrap
+    private String useRecord() {
+        MessageRecord record = new MessageRecord("test", 1);
+        return record.toString();
     }
 }
