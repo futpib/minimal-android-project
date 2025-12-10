@@ -83,6 +83,7 @@ public class MainActivity extends Activity
         useLambda();
         useMethodReference();
         useRecord();
+        useVararg();
         setContentView(label);
     }
 
@@ -155,5 +156,19 @@ public class MainActivity extends Activity
     private String useRecord() {
         MessageRecord record = new MessageRecord("test", 1);
         return record.toString();
+    }
+
+    // Vararg method
+    private int sumAll(int... numbers) {
+        int sum = 0;
+        for (int n : numbers) {
+            sum += n;
+        }
+        return sum;
+    }
+
+    // Call vararg method
+    private int useVararg() {
+        return sumAll(1, 2, 3, 4, 5);
     }
 }
